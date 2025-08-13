@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediMind Receipt Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header with Total Subscribers Counter -->
+        <header class="app-header">
+            <div class="header-content">
+                <h1 class="app-title">MediMind Receipt Generator</h1>
+                <div class="subscriber-counter">
+                    <span class="counter-label">Total Subscribers:</span>
+                    <span class="counter-value" id="subscriberCount">0</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Form Screen -->
+        <div id="formScreen" class="screen active">
+            <div class="form-container">
+                <div class="form-header">
+                    <h2 class="form-title">Generate Your Receipt</h2>
+                    <p class="form-subtitle">Join MediMind and get instant access to premium features</p>
+                </div>
+
+                <form id="receiptForm" class="receipt-form" novalidate>
+                    <div class="form-group">
+                        <label for="name" class="form-label">Full Name *</label>
+                        <input 
+                            type="text" 
+                            id="name" 
+                            name="name" 
+                            class="form-control" 
+                            placeholder="Enter your full name" 
+                            required
+                            autocomplete="name">
+                        <div class="error-message" id="nameError"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email Address *</label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            class="form-control" 
+                            placeholder="Enter your email address" 
+                            required
+                            autocomplete="email">
+                        <div class="error-message" id="emailError"></div>
+                    </div>
+
+                    <button type="submit" id="submitBtn" class="submit-btn" disabled>
+                        <span id="submitText">Generate Receipt</span>
+                        <div id="submitLoader" class="btn-loader hidden">
+                            <div class="loader-spinner"></div>
+                            Generating...
+                        </div>
+                    </button>
+                </form>
+
+                <div class="price-info">
+                    <div class="price-badge">
+                        <span class="currency">₹</span>
+                        <span class="amount">29</span>
+                        <span class="period">one-time</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Success Screen -->
+        <div id="successScreen" class="screen">
+            <div class="success-container">
+                <div class="success-header">
+                    <div class="success-icon">✅</div>
+                    <h2 class="success-title">Receipt Generated Successfully!</h2>
+                    <p class="success-subtitle">Your MediMind access is now active</p>
+                    <div class="updated-counter">
+                        Total Subscribers: <span id="updatedCount">0</span>
+                    </div>
+                </div>
+
+                <div class="receipt-preview" id="receiptPreview">
+                    <!-- Receipt content will be dynamically inserted here -->
+                </div>
+
+                <div class="success-actions">
+                    <button id="downloadBtn" class="action-btn primary">
+                        <span class="btn-icon">📄</span>
+                        Download PDF
+                    </button>
+                    <button id="shareBtn" class="action-btn secondary">
+                        <span class="btn-icon">🔗</span>
+                        Copy Share Link
+                    </button>
+                    <button id="newReceiptBtn" class="action-btn outline">
+                        <span class="btn-icon">➕</span>
+                        Create Another Receipt
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Toast Notification -->
+        <div id="toast" class="toast hidden">
+            <div class="toast-content">
+                <span id="toastMessage">Message</span>
+                <button class="toast-close" onclick="hideToast()">×</button>
+            </div>
+        </div>
+
+        <!-- Hidden PDF Content for Generation -->
+        <div id="pdfContent" class="pdf-content" style="display: none;">
+            <!-- PDF content will be dynamically generated here -->
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
