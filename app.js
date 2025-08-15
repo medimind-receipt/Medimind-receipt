@@ -229,7 +229,7 @@ Quick Access:
 
 Website: https://medimindbynajir.github.io/Medimind/
 
-App Download: https://limewire.com/d/CgeRo#culpmDPzgB
+App Download: https://www.jioaicloud.com/l/?u=JEvs0cJ_Hh5AIAbhRYhZOVEBqUICgGJIko8piu-h8rc=8BX
 
 How to Use (Video): https://youtu.be/Iz5_CI1YG_E?feature=shared
 
